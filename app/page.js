@@ -1,9 +1,15 @@
-import Link from "next/link";
-import Image from "next/image";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
 import MarketingLayout from "@/components/MarketingLayout";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const session = await getServerSession();
+
+  if (session && session.user) {
+    redirect("/dashboard");
+  }
+
   return (
     <MarketingLayout>
       <div className="w-full max-w-[1100px] mx-auto px-2">
@@ -11,7 +17,7 @@ export default function HomePage() {
           <h2 className="text-5xl font-extrabold">
             Research tools for managing resources
           </h2>
-          <p className="my-4 text-md text-gray-500">
+          <p className="my-4 text-md text-gray-600">
             Start improving your research with tools that allow you to easily
             track and manage the resources you are using.
           </p>

@@ -16,7 +16,7 @@ export default function MarketingHeader() {
       <ul className="flex items-center gap-4 ml-auto">
         <li>
           <Link
-            href="/login"
+            href="/auth/login"
             className="h-[40px] flex items-center px-4 text-zinc-700 font-medium text-sm rounded-md pointer transition hover:text-zinc-900 "
           >
             Sign In
@@ -24,7 +24,7 @@ export default function MarketingHeader() {
         </li>
         <li>
           <Link
-            href="/register"
+            href="/auth/register"
             className="h-[40px] flex items-center px-6 bg-zinc-900 font-medium text-white text-sm rounded-md pointer transition hover:bg-zinc-800"
           >
             Sign Up
