@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
-import MarketingLayout from "@/components/MarketingLayout";
+import Layout from "@/app/_components/Layout";
 
 export default async function HomePage() {
   const session = await getServerSession();
@@ -11,7 +11,7 @@ export default async function HomePage() {
   }
 
   return (
-    <MarketingLayout>
+    <Layout>
       <div className="w-full max-w-[1100px] mx-auto px-2">
         <div className="w-1/2 flex-col">
           <h2 className="text-5xl font-extrabold">
@@ -23,6 +23,6 @@ export default async function HomePage() {
           </p>
         </div>
       </div>
-    </MarketingLayout>
+    </Layout>
   );
 }
