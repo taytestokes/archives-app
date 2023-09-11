@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
-import prisma from "../../../_lib/prisma";
+import prisma from "@/app/_lib/prisma";
+import { signJwt } from "@/app/_lib/jwt";
 
 export async function POST(request) {
   const { email, password } = await request.json();
@@ -19,7 +19,8 @@ export async function POST(request) {
     if (validated) {
       delete user.password;
 
-      const accessToken = jwt.sign(user, process.env.SECRET);
+      const accessToken = signJwt(user, process.env.SECRET);
+
       const userWithAcessToken = { ...user, accessToken };
 
       return new NextResponse(JSON.stringify(userWithAcessToken));

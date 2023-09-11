@@ -1,12 +1,11 @@
 import NextAuth from "next-auth/next";
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const handler = NextAuth({
+export const nextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: "Credentials",
       async authorize(credentials) {
-        console.log({ credentials });
         const response = await fetch("http://localhost:3000/api/public/login", {
           method: "POST",
           headers: {
@@ -31,16 +30,28 @@ const handler = NextAuth({
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        token.accessToken = user.accessToken;
-        token.id = user.id;
+        return {
+          ...token,
+          ...user,
+        };
       }
       return token;
     },
     async session({ session, token }) {
-      session.user = token;
-      return session;
+      return {
+        ...session,
+        user: {
+          ...session.user,
+          ...token,
+        },
+      };
     },
   },
-});
+  session: {
+    strategy: "jwt",
+  },
+};
+
+const handler = NextAuth(nextAuthOptions);
 
 export { handler as GET, handler as POST };
