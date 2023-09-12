@@ -10,9 +10,7 @@ export async function DELETE(_, { params }) {
   const { id } = params;
   const headersList = headers();
   const bearerToken = headersList.get("Authorization");
-  console.log(bearerToken);
   const accessToken = extractJwt(bearerToken);
-  console.log(accessToken);
   const decodedToken = verifyJwt(accessToken, process.env.SECRET);
 
   if (!accessToken || !decodedToken) {

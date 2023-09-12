@@ -21,7 +21,7 @@ export default function RecordDataRow({ record }) {
         },
       });
 
-      router.refresh();
+      router.replace(router.asPath);
     } catch (error) {
       throw new Error(error.message);
     }

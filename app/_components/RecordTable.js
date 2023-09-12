@@ -2,7 +2,7 @@ import RecordDataRow from "./RecordDataRow";
 
 export default function RecordTable({ records }) {
   return (
-    <div className="flex flex-col border border-zinc-200 rounded-md">
+    <div className="flex flex-col border border-zinc-200 rounded-md overflow-x-auto">
       <table className="table-auto">
         <thead className="border-b border-zinc-200 bg-zinc-100">
           <tr>
