@@ -9,7 +9,7 @@ export default async function Header() {
   const session = await getServerSession();
 
   return (
-    <header className="w-full mx-auto flex items-center justify-between py-6">
+    <header className="w-full flex items-center justify-between p-6 border-b border-zinc-200">
       <Link href="/" className="flex items-center pointer">
         <Image
           src="/logo-light.png"

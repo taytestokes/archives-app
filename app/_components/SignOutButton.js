@@ -1,14 +1,16 @@
 "use client";
 
 import { signOut } from "next-auth/react";
+import { ArrowLeftOnRectangleIcon } from "@heroicons/react/20/solid";
 
 export default function SignOutButton() {
   return (
     <button
-      className="h-[40px] flex items-center px-4 text-zinc-700 font-medium text-sm rounded-md pointer transition hover:text-zinc-900"
+      aria-label="Select to sign out"
+      className="flex items-center p-2 bg-zinc-100 border border-zinc-200 rounded-md text-zinc-600 font-medium text-sm pointer"
       onClick={() => signOut()}
     >
-      Sign Out
+      <ArrowLeftOnRectangleIcon className="h-4 w-4" />
     </button>
   );
 }

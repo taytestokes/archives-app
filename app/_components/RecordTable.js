@@ -1,3 +1,5 @@
+import RecordDataRow from "./RecordDataRow";
+
 export default function RecordTable({ records }) {
   return (
     <div className="flex flex-col border border-zinc-200 rounded-md">
@@ -9,29 +11,14 @@ export default function RecordTable({ records }) {
 
             <th className="px-6 py-3 text-left text-xs font-semibold">Date</th>
             <th className="px-6 py-3 text-right text-xs font-semibold">
-              Action
+              Delete
             </th>
           </tr>
         </thead>
 
         <tbody className="divide-y">
           {records.map((record) => {
-            const createdAt = new Date(record.createdAt).toLocaleDateString(
-              "en-us",
-              {
-                weekday: "long",
-                year: "numeric",
-                month: "short",
-                day: "numeric",
-              }
-            );
-            return (
-              <tr key={record.id}>
-                <td className="px-6 py-4 text-xs">{record.title}</td>
-                <td className="px-6 py-4 text-xs">{record.url}</td>
-                <td className="px-6 py-4 text-xs">{createdAt}</td>
-              </tr>
-            );
+            return <RecordDataRow key={record.id} record={record} />;
           })}
         </tbody>
       </table>

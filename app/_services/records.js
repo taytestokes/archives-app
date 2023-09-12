@@ -19,3 +19,16 @@ export async function getRecords(accessToken) {
 
   return records;
 }
+
+/**
+ * Delete a record form it's ID
+ */
+export async function deleteRecord(recordId) {
+  const deletedRecord = await prisma.record.delete({
+    where: {
+      id: recordId,
+    },
+  });
+
+  return deletedRecord;
+}
